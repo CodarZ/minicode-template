@@ -1,4 +1,4 @@
-const env = wx.getAccountInfoSync().miniProgram.envVersion;
+const env = wx.getAccountInfoSync().miniProgram.envVersion
 
 const ENV = {
   // 开发版
@@ -13,8 +13,8 @@ const ENV = {
   release: {
     SERVER_URL: 'https://xxxxxxxx:8080',
   },
-};
+}
 
-const BaseENV = ENV[env];
+const BaseENV = ENV[env]
 
-export { BaseENV };
+export { BaseENV }

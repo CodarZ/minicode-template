@@ -1,0 +1,11 @@
+docs
+libs
+dist
+public
+node_modules
+miniprogram_npm
+{wx,my,swan,jd,ks,tt}components/**/*
+uni_modules
+auto-import.d.ts
+components.d.ts
+.versionrc

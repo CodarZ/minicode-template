@@ -1,5 +1,5 @@
 export const StatusCodeMessage: {
-  [x: number]: string;
+  [x: number]: string
 } = {
   200: '请求成功',
   400: '请求错误',
@@ -12,4 +12,4 @@ export const StatusCodeMessage: {
   502: '网络错误',
   503: '服务不可用',
   504: '网络超时',
-};
+}

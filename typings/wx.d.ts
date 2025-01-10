@@ -1,3 +1,3 @@
 interface IAppOption {
-  globalData: Record<string, any>;
+  globalData: Record<string, any>
 }

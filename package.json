@@ -2,26 +2,37 @@
   "name": "minicode-native-template",
   "version": "0.0.0",
   "description": "微信小程序 native 模板",
-  "scripts": {},
+  "author": "CoderZ <1476712061@qq.com>",
+  "license": "MIT",
   "keywords": [
     "微信小程序",
     "原生",
     "TDesign",
     "skyline"
   ],
-  "author": "CoderZ <1476712061@qq.com>",
-  "license": "MIT",
   "engines": {
     "node": ">=20.6.1"
+  },
+  "scripts": {
+    "lint:prettier": "prettier --write \"**/*.{js,ts,wxs,json,css,wxss,html,wxml,md}\"",
+    "lint:eslint": "eslint .",
+    "lint:style": "stylelint \"src/**/*.{css,scss}\"",
+    "lint:fix": "eslint . --fix && stylelint --fix \"src/**/*.{css,wxss,scss}\" && prettier --write \"**/*.{js,ts,wxs,json,css,wxss,html,wxml,md}\"",
+    "type-check": "tsc"
   },
   "dependencies": {
     "tdesign-miniprogram": "^1.8.4"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^3.13.0",
     "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
     "globals": "^15.14.0",
     "miniprogram-api-typings": "^4.0.2",
     "prettier": "^3.4.2",
+    "stylelint": "^16.12.0",
+    "stylelint-config-recess-order": "^5.1.1",
+    "stylelint-config-standard": "^36.0.1",
     "typescript": "^5.7.3"
   }
 }

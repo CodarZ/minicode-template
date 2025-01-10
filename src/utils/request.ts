@@ -1,21 +1,21 @@
-import { StatusCodeMessage } from '@/constants/enums';
+import { StatusCodeMessage } from '@/constants/enums'
 import {
   requestInterceptor,
   responseInterceptor,
   uploadResponseInterceptor,
   uploadResquestInterceptor,
-} from './interceptor/index';
+} from './interceptor/index'
 
-const DEFAULT_TIMEOUT = 60000;
-const UPLOAD_TIMEOUT = 300000;
+const DEFAULT_TIMEOUT = 60000
+const UPLOAD_TIMEOUT = 300000
 
 function _httpRequest<T>(
   url: string,
   method: WechatMiniprogram.RequestOption['method'],
   data: WechatMiniprogram.RequestOption['data'],
-  options?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>
+  options?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>,
 ) {
-  const { formatURL, configs } = requestInterceptor(url, options);
+  const { formatURL, configs } = requestInterceptor(url, options)
 
   return new Promise<ApiResponse<T>>((resolve, reject) => {
     wx.request({
@@ -25,49 +25,41 @@ function _httpRequest<T>(
       timeout: DEFAULT_TIMEOUT,
       ...configs,
       success: (res) => {
-        const responseData = res.data as ApiResponse<T>; // 开发者服务器返回的数据
-        let title =
-          `${responseData.msg}` || `${StatusCodeMessage[responseData.code]}` || '服务异常';
+        const responseData = res.data as ApiResponse<T> // 开发者服务器返回的数据
+        const title =
+          `${responseData.msg}` || `${StatusCodeMessage[responseData.code]}` || '服务异常'
 
-        const flag = responseInterceptor(res);
+        const flag = responseInterceptor(res)
         if (flag) {
-          resolve(responseData);
+          resolve(responseData)
         } else {
-          reject(new Error(title));
+          reject(new Error(title))
         }
       },
       fail: (err) => {
         // 只要开发者的服务器有响应，就不会走这里
-        console.log(`${err.errno}: ${err.errMsg}`);
-        reject(new Error(err.errMsg || '服务器异常'));
+        console.log(`${err.errno}: ${err.errMsg}`)
+        reject(new Error(err.errMsg || '服务器异常'))
       },
       complete: () => {
-        wx.hideLoading();
+        wx.hideLoading()
       },
-    });
-  });
+    })
+  })
 }
 
-/**
- *
- * @param url 接口地址
- * @param filePath 文件路径
- * @param formData 附带的数据
- * @param options 额外的配置
- * @returns
- */
 function upload<T>(
   url: string,
   filePath: string,
   formData?: WechatMiniprogram.UploadFileOption['formData'],
-  options?: Omit<WechatMiniprogram.UploadFileOption, 'url' | 'filePath' | 'formData'>
+  options?: Omit<WechatMiniprogram.UploadFileOption, 'url' | 'filePath' | 'formData'>,
 ) {
-  const { formatURL, configs } = uploadResquestInterceptor(url, options);
+  const { formatURL, configs } = uploadResquestInterceptor(url, options)
 
   return new Promise<ApiResponse<T>>((resolve, reject) => {
     wx.showLoading({
       title: '正在上传中',
-    });
+    })
     wx.uploadFile({
       url: formatURL,
       filePath,
@@ -77,61 +69,61 @@ function upload<T>(
       formData,
       ...configs,
       success: (res) => {
-        const responseData = JSON.parse(res.data) as ApiResponse<T>; // 开发者服务器返回的数据
+        const responseData = JSON.parse(res.data) as ApiResponse<T> // 开发者服务器返回的数据
 
-        let title =
-          `${responseData.msg}` || `${StatusCodeMessage[responseData.code]}` || '服务异常';
+        const title =
+          `${responseData.msg}` || `${StatusCodeMessage[responseData.code]}` || '服务异常'
 
-        const flag = uploadResponseInterceptor(res);
+        const flag = uploadResponseInterceptor(res)
         if (flag) {
-          resolve(responseData);
+          resolve(responseData)
         } else {
-          reject(new Error(title));
+          reject(new Error(title))
         }
       },
       fail: (err) => {
         // 只要开发者的服务器有响应，就不会走这里
-        console.log(err.errMsg);
-        reject(new Error(err.errMsg || '服务器异常'));
+        console.log(err.errMsg)
+        reject(new Error(err.errMsg || '服务器异常'))
       },
       complete: () => {
-        wx.hideLoading();
+        wx.hideLoading()
       },
-    });
-  });
+    })
+  })
 }
 
 function get<T>(
   url: string,
   params: WechatMiniprogram.IAnyObject,
-  options?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>
+  options?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>,
 ) {
-  const data = JSON.stringify(params);
-  return _httpRequest<T>(url, 'GET', data, options);
+  const data = JSON.stringify(params)
+  return _httpRequest<T>(url, 'GET', data, options)
 }
 
 function post<T>(
   url: string,
   params: WechatMiniprogram.IAnyObject,
-  options?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>
+  options?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>,
 ) {
-  return _httpRequest<T>(url, 'POST', params, options);
+  return _httpRequest<T>(url, 'POST', params, options)
 }
 
 function put<T>(
   url: string,
   params: WechatMiniprogram.IAnyObject,
-  config?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>
+  config?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>,
 ) {
-  return _httpRequest<T>(url, 'PUT', params, config);
+  return _httpRequest<T>(url, 'PUT', params, config)
 }
 
 function del<T>(
   url: string,
   params: WechatMiniprogram.IAnyObject,
-  config?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>
+  config?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>,
 ) {
-  return _httpRequest<T>(url, 'DELETE', params, config);
+  return _httpRequest<T>(url, 'DELETE', params, config)
 }
 
 const request = {
@@ -140,6 +132,6 @@ const request = {
   put,
   del,
   upload,
-};
+}
 
-export { request };
+export { request }
