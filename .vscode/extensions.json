@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    "crazyurus.miniprogram-vscode-extension",
+    "simonhe.common-intellisense",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "maggie.eslint-rules-zh-plugin",
+    "oderwat.indent-rainbow",
+    "sirtori.indenticator",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
+    "stylelint.vscode-stylelint",
+    "shardulm94.trailing-spaces",
+    "qiu8310.minapp-vscode",
+    "mrmlnc.vscode-json5"
+  ]
+}

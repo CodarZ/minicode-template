@@ -1,0 +1,154 @@
+{
+  // explorer
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  // workbench
+  "workbench.startupEditor": "welcomePage",
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "material-icon-theme",
+
+  // terminal
+  "terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono', Consolas, 'Courier New', monospace, 'Droid Sans Mono'",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+
+  // editor
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.guides.bracketPairs": "active",
+  "editor.tabSize": 2,
+  "editor.fontSize": 18,
+  "editor.fontFamily": "'FiraCode Nerd Font', Consolas, 'Courier New', monospace",
+  "editor.autoClosingBrackets": "always",
+  "editor.hover.sticky": true,
+  "editor.linkedEditing": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "：": true,
+    "（": true,
+    "）": true
+  },
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
+    "source.fixAll.stylelint": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.prettier": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "[.editorconfig]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
+  // files
+  "files.simpleDialog.enable": true,
+  "files.associations": {
+    "*.json": "jsonc",
+    "*.json5": "json5",
+    ".versionrc": "json5",
+    "*.wxml": "html",
+    "*.wxs": "javascript",
+    "*.wxss": "css"
+  },
+
+  // emmet
+  "emmet.includeLanguages": {
+    "wxml": "html",
+    "wxs": "javascript",
+    "wxss": "css"
+  },
+
+  // css
+  "css.lint.hexColorLength": "error",
+
+  // exextension
+  // Eslint
+  "eslint.useFlatConfig": true,
+  "eslint.format.enable": false,
+
+  // stylelint
+  "stylelint.enable": true,
+  "css.validate": false, // 关闭编辑器内置样式检查（避免与stylelint冲突）
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": ["css", "wxss", "postcss", "less", "scss", "sass"],
+  "stylelint.snippet": ["css", "wxss", "postcss", "less", "scss", "sass"],
+
+  // prettier
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": true,
+  "prettier.documentSelectors": [".*rc"],
+  "prettier.endOfLine": "auto",
+  "prettier.arrowParens": "always",
+
+  // markdownlint
+  "markdownlint.config": {
+    "MD013": false,
+    "MD033": false
+  },
+
+  // common-intellisense
+  "common-intellisense.ui": ["tdesignMiniprogram1"],
+
+  // minapp
+  "minapp-vscode.wxmlFormatter": "prettier",
+  "minapp-vscode.cssExtname": "scss",
+  "minapp-vscode.wxmlExtname": "wxml",
+  "minapp-vscode.jsExtname": "ts",
+  "minapp-vscode.showSuggestionOnEnter": true,
+  "minapp-vscode.prettier": {
+    // "parser": "html",
+    // "endOfLine": "auto",
+    // "htmlWhitespaceSensitivity": "strict",
+    // "printWidth": 100,
+    // "quoteProps": "as-needed",
+    // "semi": false,
+    // "singleQuote": true,
+    // "tabWidth": 2,
+    // "trailingComma": "all"
+  },
+
+  // Git
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+
+  "search.exclude": {
+    // 生成目录
+    "dist": true,
+    "public": true,
+    "miniprogram_npm": true,
+    "node_modules": true,
+    "libs/**/*": true,
+
+    // 版本控制和临时文件
+    ".git": true,
+    ".gitignore": true,
+    ".DS_Store": true,
+    "Thumbs.db": true,
+
+    // 特定配置文件
+    "**/*.lock": true,
+    "**/*.{eslint,stylelint,prettier}*": true,
+
+    // 其他
+    "README.md": true
+  },
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
+}

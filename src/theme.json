@@ -1,0 +1,12 @@
+{
+  "light": {
+    "style": "black",
+    "color": "#181818",
+    "bgColor": "#ffffff"
+  },
+  "dark": {
+    "style": "white",
+    "color": "#ffffff",
+    "bgColor": "#181818"
+  }
+}

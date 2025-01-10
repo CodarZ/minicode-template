@@ -1,0 +1,43 @@
+{
+  "entryPagePath": "pages/redirect/index",
+  "pages": ["pages/redirect/index", "pages/home/index"],
+  "subPackages": [],
+  "darkmode": false,
+  "themeLocation": "theme.json",
+  "window": {
+    "navigationBarTitleText": "Minicode",
+    "navigationStyle": "custom",
+    "backgroundColor": "@bgColor",
+    "backgroundColorTop": "@bgColor",
+    "navigationBarTextStyle": "@style",
+    "backgroundColorBottom": "@bgColor",
+    "navigationBarBackgroundColor": "@bgColor"
+  },
+  "usingComponents": {
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "t-toast": "tdesign-miniprogram/toast/toast"
+  },
+  "useExtendedLib": {},
+  "resolveAlias": {
+    "@/*": "/*"
+  },
+  "workers": {
+    "path": "workers",
+    "isSubpackage": false
+  },
+  "style": "v2",
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
