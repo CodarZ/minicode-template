@@ -1,9 +1,0 @@
-docs
-libs
-dist
-public
-node_modules
-**/miniprogram_npm
-.versionrc
-uni_modules
-{wx,my,swan,jd,ks,tt}components/**/*
