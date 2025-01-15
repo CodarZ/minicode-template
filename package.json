@@ -31,7 +31,7 @@
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.14.0",
-    "miniprogram-api-typings": "^4.0.2",
+    "miniprogram-api-typings": "^4.0.4",
     "prettier": "^3.4.2",
     "standard-changelog": "^6.0.0",
     "typescript": "^5.7.3"
