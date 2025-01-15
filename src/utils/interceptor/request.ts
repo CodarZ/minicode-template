@@ -1,11 +1,13 @@
 import { StatusCodeMessage } from '@/constants/enums'
 import { BaseENV } from '../env'
+import { Log } from '../log'
 
 export function requestInterceptor(
   url: string,
   options?: Omit<WechatMiniprogram.RequestOption, 'url' | 'method' | 'data'>,
 ) {
   let formatURL = url
+
   if (url.startsWith('/api')) {
     const noPrefixURL = url.replace(/^\/api/, '')
     formatURL = `${BaseENV.SERVER_URL}${noPrefixURL}`
@@ -31,7 +33,8 @@ export function responseInterceptor<T>(
     } else if (res.data && typeof res.data === 'object') {
       responseData = res.data as ApiResponse<T>
     } else {
-      throw new Error('响应数据无效')
+      Log.ERROR('【请求失败】 |  返回数据, 无法被解析: ', responseData)
+      throw new Error('无效的响应数据')
     }
   } catch (err) {
     return false
@@ -49,6 +52,7 @@ export function responseInterceptor<T>(
         icon: 'none',
         duration: 4000,
         success() {
+          Log.WARN(`【请求成功】 ${title}`)
           wx.removeStorageSync('token')
           // wx.clearStorageSync()
           wx.reLaunch({

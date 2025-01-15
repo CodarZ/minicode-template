@@ -5,6 +5,7 @@ import {
   uploadResponseInterceptor,
   uploadResquestInterceptor,
 } from './interceptor/index'
+import { Log } from './log'
 
 const DEFAULT_TIMEOUT = 60000
 const UPLOAD_TIMEOUT = 300000
@@ -17,6 +18,7 @@ function _httpRequest<T>(
 ) {
   const { formatURL, configs } = requestInterceptor(url, options)
 
+  Log.INFO(`【发起请求】 |  ${method}`, formatURL, '附带参数: ', data)
   return new Promise<ApiResponse<T>>((resolve, reject) => {
     wx.request({
       url: formatURL,
@@ -31,15 +33,20 @@ function _httpRequest<T>(
 
         const flag = responseInterceptor(res)
         if (flag) {
+          // TODO 处理 responseData 太多太长的问题
+          Log.INFO(`【请求成功】 |  ${title}`, responseData)
           resolve(responseData)
         } else {
+          // TODO 处理 responseData 太多太长的问题
+          Log.ERROR(`【请求失败】 |  ${title}`, responseData)
           reject(new Error(title))
         }
       },
       fail: (err) => {
         // 只要开发者的服务器有响应，就不会走这里
+        Log.ERROR(`【请求服务器无响应】 |  ${err.errno} ${err.errMsg}`)
         console.log(`${err.errno}: ${err.errMsg}`)
-        reject(new Error(err.errMsg || '服务器异常'))
+        reject(new Error(err.errMsg || '请求服务器无响应'))
       },
       complete: () => {
         wx.hideLoading()
@@ -55,7 +62,7 @@ function upload<T>(
   options?: Omit<WechatMiniprogram.UploadFileOption, 'url' | 'filePath' | 'formData'>,
 ) {
   const { formatURL, configs } = uploadResquestInterceptor(url, options)
-
+  Log.INFO(`【发起上传文件请求】 | `, formatURL, '附带参数:', formData)
   return new Promise<ApiResponse<T>>((resolve, reject) => {
     wx.showLoading({
       title: '正在上传中',
@@ -76,15 +83,19 @@ function upload<T>(
 
         const flag = uploadResponseInterceptor(res)
         if (flag) {
+          // TODO 处理 responseData 太多太长的问题
+          Log.INFO(`【文件上传成功】 |  ${title}`, responseData)
           resolve(responseData)
         } else {
+          // TODO 处理 responseData 太多太长的问题
+          Log.ERROR(`【文件上传失败】 |  ${title}`, responseData)
           reject(new Error(title))
         }
       },
       fail: (err) => {
         // 只要开发者的服务器有响应，就不会走这里
-        console.log(err.errMsg)
-        reject(new Error(err.errMsg || '服务器异常'))
+        Log.ERROR(`【上传文件服务器无响应】 |  ${err.errMsg}`)
+        reject(new Error(err.errMsg || '上传文件服务无响应'))
       },
       complete: () => {
         wx.hideLoading()

@@ -1,16 +1,19 @@
 const env = wx.getAccountInfoSync().miniProgram.envVersion
 
 const ENV = {
-  // 开发版
   develop: {
+    env: 'develop',
+    envName: '开发版',
     SERVER_URL: 'https://xxxxxxxx:8080',
   },
-  // 体验版
   trial: {
+    env: 'trial',
+    envName: '体验版',
     SERVER_URL: 'https://xxxxxxxx:8080',
   },
-  // 正式版
   release: {
+    env: 'release',
+    envName: '正式版',
     SERVER_URL: 'https://xxxxxxxx:8080',
   },
 }

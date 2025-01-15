@@ -1,5 +1,6 @@
 import { StatusCodeMessage } from '@/constants/enums'
 import { BaseENV } from '../env'
+import { Log } from '../log'
 
 export function uploadResquestInterceptor(
   url: string,
@@ -32,7 +33,8 @@ export function uploadResponseInterceptor<T>(
     } else if (res.data && typeof res.data === 'object') {
       responseData = res.data as ApiResponse<T>
     } else {
-      throw new Error('响应数据无效')
+      Log.ERROR('【文件上传失败】 |  返回数据, 无法被解析: ', responseData)
+      throw new Error('无效的响应数据')
     }
   } catch (err) {
     return false
