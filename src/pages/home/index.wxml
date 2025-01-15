@@ -1,3 +1,22 @@
-<t-navbar title="首页"> </t-navbar>
-
-<view> Home </view>
+<view class="skyline">
+  <t-navbar title="首页"> </t-navbar>
+  <scroll-view
+    class="scroll-view"
+    enhanced
+    scroll-y="{{ true }}"
+    show-scrollbar="{{ false }}"
+    type="list"
+  >
+    <block wx:for="{{ list }}">
+      <view class="index">{{ index }}</view>
+    </block>
+    <view class="ellipsis-line-3">
+      <!-- 自动格式化会影响效果 -->
+      <text overflow="ellipsis" max-lines="{{ 3 }}"
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa error blanditiis dolores,
+        repellendus suscipit voluptas consectetur maxime enim ut autem vitae cum ipsa hic cupiditate
+        voluptate facilis, consequatur minima corporis.
+      </text>
+    </view>
+  </scroll-view>
+</view>

@@ -31,10 +31,11 @@
     "skyline": {
       "defaultDisplayBlock": true,
       "defaultContentBox": true,
+      "enableScrollViewAutoSize": true,
       "tagNameStyleIsolation": "legacy",
       "disableABTest": true,
-      "sdkVersionBegin": "3.0.0",
-      "sdkVersionEnd": "15.255.255"
+      "sdkVersionBegin": "3.5.8",
+      "sdkVersionEnd": "255.255.255"
     }
   },
   "componentFramework": "glass-easel",

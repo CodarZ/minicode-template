@@ -1,0 +1,24 @@
+page,
+view,
+text,
+image,
+button,
+video,
+map,
+scroll-view,
+swiper,
+input,
+textarea,
+navigator {
+  position: relative;
+  box-sizing: border-box;
+  background-origin: border-box;
+  isolation: isolate;
+}
+
+page,
+.page {
+  height: 100%;
+  box-sizing: border-box;
+  font-display: swap;
+}

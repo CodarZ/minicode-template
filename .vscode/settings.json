@@ -111,6 +111,9 @@
   "minapp-vscode.wxmlExtname": "wxml",
   "minapp-vscode.jsExtname": "ts",
   "minapp-vscode.showSuggestionOnEnter": true,
+  "minapp-vscode.disableDecorate": true,
+  "minapp-vscode.styleExtensions": ["scss"],
+  "minapp-vscode.globalStyleFiles": ["../src/styles/global.scss"],
   "minapp-vscode.prettier": {
     // "parser": "html",
     // "endOfLine": "auto",
