@@ -7,16 +7,31 @@
     show-scrollbar="{{ false }}"
     type="list"
   >
-    <block wx:for="{{ list }}">
-      <view class="index">{{ index }}</view>
-    </block>
-    <view class="ellipsis-line-3">
-      <!-- 自动格式化会影响效果 -->
-      <text overflow="ellipsis" max-lines="{{ 3 }}"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa error blanditiis dolores,
-        repellendus suscipit voluptas consectetur maxime enim ut autem vitae cum ipsa hic cupiditate
-        voluptate facilis, consequatur minima corporis.
-      </text>
-    </view>
+    <t-cell-group theme="card" style="margin-top: 16px">
+      <t-cell
+        leftIcon="centimeter"
+        title="选择日期"
+        hover
+        note="{{ datePropPickerText }}"
+        arrow
+        bindtap="_showPicker"
+        data-prop="datePropPicker"
+      />
+    </t-cell-group>
   </scroll-view>
 </view>
+
+<!-- 日期选择器 -->
+<t-date-time-picker
+  auto-close
+  mode="date"
+  title="选择日期"
+  format="YYYY-MM-DD"
+  value="{{datePropPickerValue}}"
+  visible="{{ datePropPickerVisible }}"
+  default-value="{{ _DateTimePickerDefault }}"
+  popup-props="{{ _DateTimePickerPopupProps }}"
+  bind:change="_onConfirm"
+  bind:cancel="_closePicker"
+  bind:close="_closePicker"
+/>
