@@ -23,6 +23,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "dayjs": "^1.11.13",
     "tdesign-miniprogram": "^1.8.4"
   },
   "devDependencies": {
