@@ -17,6 +17,15 @@
         bindtap="_showPicker"
         data-prop="datePropPicker"
       />
+      <t-cell
+        leftIcon="city-1"
+        title="选择城市"
+        hover
+        note="{{ cityPropPickerText }}"
+        arrow
+        bindtap="_showPicker"
+        data-prop="cityPropPicker"
+      />
     </t-cell-group>
   </scroll-view>
 </view>
@@ -27,7 +36,8 @@
   mode="date"
   title="选择日期"
   format="YYYY-MM-DD"
-  value="{{datePropPickerValue}}"
+  data-prop="datePropPicker"
+  value="{{ datePropPickerValue }}"
   visible="{{ datePropPickerVisible }}"
   default-value="{{ _DateTimePickerDefault }}"
   popup-props="{{ _DateTimePickerPopupProps }}"
@@ -35,3 +45,19 @@
   bind:cancel="_closePicker"
   bind:close="_closePicker"
 />
+
+<!-- 选择城市 -->
+<t-picker
+  title="选择城市"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  using-custom-navbar
+  data-prop="cityPropPicker"
+  value="{{ cityPropPickerValue }}"
+  visible="{{ cityPropPickerVisible }}"
+  popup-props="{{ _PickerPopupProps }}"
+  bind:change="_onConfirm"
+  bind:cancel="_closePicker"
+>
+  <t-picker-item options="{{ cityOptions }}"></t-picker-item>
+</t-picker>
