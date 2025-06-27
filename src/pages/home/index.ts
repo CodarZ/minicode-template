@@ -1,0 +1,5 @@
+Component({
+  data: {},
+  behaviors: [],
+  created() {},
+});

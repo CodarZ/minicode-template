@@ -1,0 +1,17 @@
+/** line-clamp mixin，用于多行文本截断 */
+@mixin line-clamp($lines) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+@for $i from 1 through 5 {
+  .ellipsis-line#{$i} {
+    @include line-clamp($i);
+  }
+}

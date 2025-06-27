@@ -1,0 +1,57 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@vant/area-data':
+        specifier: ^2.0.0
+        version: 2.0.0
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
+      tdesign-miniprogram:
+        specifier: ^1.9.6
+        version: 1.9.6
+    devDependencies:
+      miniprogram-api-typings:
+        specifier: ^4.0.7
+        version: 4.0.7
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+packages:
+
+  '@vant/area-data@2.0.0':
+    resolution: {integrity: sha512-zgP4AA8z09S9QTNgVCCHo9cHjcybrv22RJDYPjuCkecn4SB98T5EoPQh2TwqbQXmUhbaOGgiZGy3OUaUxnY7qg==}
+
+  dayjs@1.11.13:
+    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
+
+  miniprogram-api-typings@4.0.7:
+    resolution: {integrity: sha512-sUxqpA1+JxnDWYjO6ihiLWNJl94WzjlhnDpozfBeC+w8Mpejjsc8JuxyC3Xisimj/gp5OYaJ7nd4fM6wepzhEQ==}
+
+  tdesign-miniprogram@1.9.6:
+    resolution: {integrity: sha512-jZbVCOy8n07oJl+V9oBeT+l5wuXTynR7zgu45js8CEXxWH1TfUAACCNnRhzErCFbqLVoys2JV3Li8W4AuHg5ng==}
+
+  typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+snapshots:
+
+  '@vant/area-data@2.0.0': {}
+
+  dayjs@1.11.13: {}
+
+  miniprogram-api-typings@4.0.7: {}
+
+  tdesign-miniprogram@1.9.6: {}
+
+  typescript@5.8.3: {}

@@ -1,0 +1,25 @@
+page,
+.page {
+  --size-none: 0;
+  --size-1: 4rpx;
+  --size-2: 8rpx;
+  --size-3: 12rpx;
+  --size-4: 16rpx;
+  --size-5: 20rpx;
+  --size-6: 24rpx;
+  --size-7: 28rpx;
+  --size-8: 32rpx;
+  --size-9: 36rpx;
+  --size-10: 40rpx;
+  --size-11: 44rpx;
+  --size-12: 48rpx;
+  --size-13: 52rpx;
+  --size-14: 56rpx;
+  --size-15: 60rpx;
+  --size-16: 64rpx;
+
+  // 常用间距
+  --size-page: var(--size-8);
+  --padding: var(--size-6);
+  --margin: var(--size-8);
+}

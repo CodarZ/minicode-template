@@ -1,0 +1,117 @@
+{
+  // explorer
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  // updated 2025-06-04 06:14 https://github.com/antfu/vscode-file-nesting-config
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    ".env": "*.env, .env.*, .envrc, env.d.ts",
+    ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .lfsconfig, .mailmap, .git-blame*",
+    ".project": ".classpath",
+    "package.json": "*.code-workspace, .browserslist*, .circleci*, .commitlint*, .cspell*, .cursor*, .cz-config.js, .czrc, .dlint.json, .dprint.json*, .editorconfig, .eslint*, .firebase*, .flowconfig, .github*, .gitlab*, .gitmojirc.json, .gitpod*, .huskyrc*, .jslint*, .knip.*, .lintstagedrc*, .ls-lint.yml, .markdownlint*, .node-version, .nodemon*, .npm*, .nvmrc, .oxlintrc.json, .oxlintrc.json.bak, .pm2*, .pnp.*, .pnpm*, .prettier*, .pylintrc, .release-please*.json, .releaserc*, .ruff.toml, .sentry*, .shellcheckrc, .simple-git-hooks*, .stackblitz*, .styleci*, .stylelint*, .tazerc*, .textlint*, .tool-versions, .travis*, .versionrc*, .vscode*, .watchman*, .windsurfrules, .xo-config*, .yamllint*, .yarnrc*, Procfile, apollo.config.*, appveyor*, azure-pipelines*, biome.json*, bower.json, build.config.*, bun.lock, bun.lockb, bunfig.toml, colada.options.ts, commitlint*, crowdin*, cspell*, dangerfile*, dlint.json, dprint.json*, ec.config.*, electron-builder.*, eslint*, firebase.json, grunt*, gulp*, jenkins*, knip.*, lerna*, lint-staged*, nest-cli.*, netlify*, nixpacks*, nodemon*, npm-shrinkwrap.json, nx.*, package-lock.json, package.nls*.json, phpcs.xml, pm2.*, pnpm*, prettier*, pullapprove*, pyrightconfig.json, release-please*.json, release-tasks.sh, release.config.*, renovate*, rolldown.config.*, rollup.config.*, rspack*, ruff.toml, sentry.*.config.ts, simple-git-hooks*, sonar-project.properties, stylelint*, taze.config.*, tsdown.config.*, tslint*, tsup.config.*, turbo*, typedoc*, unlighthouse*, vercel*, vetur.config.*, webpack*, workspace.json, wrangler.*, xo.config.*, yarn*",
+    "README*": "AUTHORS, Authors, BACKERS*, Backers*, CHANGELOG*, CITATION*, CODEOWNERS, CODE_OF_CONDUCT*, CONTRIBUTING*, CONTRIBUTORS, COPYING*, CREDITS, Changelog*, Citation*, Code_Of_Conduct*, Codeowners, Contributing*, Contributors, Copying*, Credits, GOVERNANCE.MD, Governance.md, HISTORY.MD, History.md, LICENSE*, License*, MAINTAINERS, Maintainers, README-*, README_*, RELEASE_NOTES*, ROADMAP.MD, Readme-*, Readme_*, Release_Notes*, Roadmap.md, SECURITY.MD, SPONSORS*, Security.md, Sponsors*, authors, backers*, changelog*, citation*, code_of_conduct*, codeowners, contributing*, contributors, copying*, credits, governance.md, history.md, license*, maintainers, readme-*, readme_*, release_notes*, roadmap.md, security.md, sponsors*",
+    "*.js": "$(capture).js.map, $(capture).*.js, $(capture)_*.js, $(capture).d.ts, $(capture).d.ts.map, $(capture).js.flow",
+    "*.ts": "$(capture).js, $(capture).d.ts.map, $(capture).*.ts, $(capture)_*.js, $(capture)_*.ts",
+    "project.config.json": "project*",
+    "app.json": "theme.json,sitemap.json"
+  },
+  // workbench
+  "workbench.startupEditor": "welcomePage",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "One Dark Pro",
+  // terminal
+  "terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono', Consolas, 'Courier New', monospace, 'Droid Sans Mono'",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.lineHeight": 1.1,
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  // editor
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.guides.bracketPairs": "active",
+  "editor.tabSize": 2,
+  "editor.fontSize": 18,
+  "editor.fontFamily": "'FiraCode Nerd Font', Consolas, 'Courier New', monospace",
+  "editor.autoClosingBrackets": "always",
+  "editor.hover.sticky": true,
+  "editor.linkedEditing": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "：": true,
+    "（": true,
+    "）": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[.editorconfig]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  // files
+  "files.simpleDialog.enable": true,
+  "files.associations": {
+    "*.json": "jsonc",
+    "*.json5": "json5",
+    "*.wxml": "html",
+    "*.wxs": "javascript",
+    "*.wxss": "css",
+    "*.axml": "html",
+    "*.acss": "css",
+    ".versionrc": "json5",
+    "*.cjson": "jsonc"
+  },
+  // Git
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  // emmet
+  "emmet.includeLanguages": {
+    "wxml": "html",
+    "wxs": "javascript",
+    "wxss": "css",
+    "axml": "html",
+    "acss": "css"
+  },
+  // exextension
+  // Eslint
+  "eslint.useFlatConfig": true,
+  "eslint.format.enable": false,
+  // prettier
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": true,
+  "prettier.endOfLine": "auto",
+  "files.exclude": {
+    ".git": true,
+    ".DS_Store": true,
+    "Thumbs.db": true
+  },
+  "search.exclude": {
+    // 生成目录
+    "dist": true,
+    "public": true,
+    "miniprogram_npm": true,
+    "node_modules": true,
+    "libs/**/*": true,
+    // 版本控制和临时文件
+    ".git": true,
+    ".gitignore": true,
+    ".DS_Store": true,
+    "Thumbs.db": true,
+    // 特定配置文件
+    "**/*.lock": true,
+    "**/*.{eslint,stylelint,prettier}*": true,
+    // 其他
+    "README.md": true
+  }
+}

@@ -1,0 +1,16 @@
+<view class="wrapper">
+  <t-navbar title="首页"></t-navbar>
+  <scroll-view
+    class="scroll-view"
+    scroll-y="{{ true }}"
+    enhanced="{{ true }}"
+    show-scrollbar="{{ false }}"
+    type="list"
+  >
+    <block wx:for="{{ 100 }}" wx:key="index">
+      <view style="margin-bottom: 32rpx">
+        {{ index }}
+      </view>
+    </block>
+  </scroll-view>
+</view>

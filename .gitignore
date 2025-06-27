@@ -1,0 +1,47 @@
+# 微信小程序
+miniprogram_npm
+project.private.config.json
+
+# Logs
+logs
+*.log
+.pnpm-debug.log*
+
+# Cache and Dependency directories
+.temp
+.cache
+.eslintcache
+.stylelintcache
+.npm
+node_modules
+
+# Output of 'npm pack'
+*.tgz
+
+# git
+.husky/*
+!.husky/commit-msg
+!.husky/pre-commit
+
+# 其他
+dist
+dist-ssr
+*-lock.json
+*.key
+*.discard
+*.code-workspace
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/global.code-snippets
+
+# Webstorm
+.idea
+
+# MacOS and Thumbnails
+.DS_Store
+._*

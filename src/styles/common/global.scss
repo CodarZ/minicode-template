@@ -1,0 +1,18 @@
+/** 作为容器类, 用于整个界面滚动 */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - env(safe-area-inset-bottom));
+  .scroll-view {
+    box-sizing: border-box;
+    flex: 1;
+    height: 0;
+  }
+}
+
+/** 清除浮动 */
+.clearfix::after {
+  display: table;
+  clear: both;
+  content: '';
+}

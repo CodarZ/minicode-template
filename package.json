@@ -1,0 +1,24 @@
+{
+  "name": "minicode-native-template",
+  "description": "基于 TDesign 的微信小程序原生模板",
+  "version": "0.0.0",
+  "author": "CoderZ <1476712061@qq.com>",
+  "license": "MIT",
+  "scripts": {},
+  "keywords": [
+    "微信小程序",
+    "TDesign"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@vant/area-data": "^2.0.0",
+    "dayjs": "^1.11.13",
+    "tdesign-miniprogram": "^1.9.6"
+  },
+  "devDependencies": {
+    "miniprogram-api-typings": "^4.0.7",
+    "typescript": "^5.8.3"
+  }
+}
