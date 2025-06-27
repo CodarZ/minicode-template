@@ -1,4 +1,4 @@
-import { TdPopupProps } from "@/miniprogram_npm/tdesign-miniprogram/popup/type";
+import { TdPopupProps } from "tdesign-miniprogram/popup/type";
 import dayjs from "dayjs";
 
 /**
