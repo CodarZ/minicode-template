@@ -53,7 +53,11 @@ const pickerBehavior = Behavior({
      *
      * @example this._closePicker()
      */
-    _closePicker() {
+    _closePicker(e: WechatMiniprogram.CustomEvent) {
+      const trigger = e.detail.trigger;
+
+      if (trigger === "confirm-btn") return;
+
       this.setData({
         _pickedProp: "",
         _pickedPropValue: [],
@@ -67,7 +71,7 @@ const pickerBehavior = Behavior({
      * @remarks
      * - 普通选择器 `Picker` 的值为数组类型
      */
-    _onConfirmPicker(e: WechatMiniprogram.CustomEvent) {
+    _confirmPicker(e: WechatMiniprogram.CustomEvent) {
       const { value, label } = e.detail;
       const { _pickedProp } = this.data;
 
@@ -87,6 +91,8 @@ const pickerBehavior = Behavior({
           // @ts-ignore
           console.log(`${_pickedProp}Label`, this.data[`${_pickedProp}Label`]);
           console.groupEnd();
+
+          // this._closePicker(e);
         }
       );
     },
