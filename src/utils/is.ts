@@ -44,6 +44,20 @@ export function isEmptyObject(obj: any): boolean {
   return isObject(obj) && Object.keys(obj).length === 0;
 }
 
+export function isEmptyArray(obj: any): boolean {
+  return Array.isArray(obj) && obj.length === 0;
+}
+
+export function isEmpty(obj: any): boolean {
+  return (
+    isNull(obj) ||
+    isUndefined(obj) ||
+    (isString(obj) && obj.trim() === "") ||
+    (isArray(obj) && isEmptyArray(obj)) ||
+    (isObject(obj) && isEmptyObject(obj))
+  );
+}
+
 export function isDate(obj: any) {
   return opt.call(obj) === "[object Date]";
 }
