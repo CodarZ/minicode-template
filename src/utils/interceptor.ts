@@ -8,9 +8,10 @@ export function _requestInterceptor(
   options?: Omit<WechatMiniprogram.RequestOption, "url" | "method" | "data">
 ) {
   let formatURL = url;
+  let noPrefixURL = url;
 
   if (url.startsWith("/api")) {
-    const noPrefixURL = url.replace(/^\/api/, "");
+    noPrefixURL = url.replace(/^\/api/, "");
     formatURL = `${BaseENV.SERVER_URL}${noPrefixURL}`;
   }
 
@@ -21,13 +22,14 @@ export function _requestInterceptor(
   if (token) configs = { header: { authorization: token } };
   if (options) Object.assign(configs, options);
 
-  return { formatURL, configs };
+  return { formatURL, noPrefixURL, configs };
 }
 
 export function _responseInterceptor<T>(
   res:
     | WechatMiniprogram.RequestSuccessCallbackResult
     | WechatMiniprogram.UploadFileSuccessCallbackResult,
+  url: string,
   resolve: (value: T | PromiseLike<T>) => void,
   reject: (reason?: any) => void
 ) {
@@ -41,36 +43,66 @@ export function _responseInterceptor<T>(
       responseData = data as WechatMiniprogram.IAnyObject;
     }
   } catch (error) {
-    Log.ERROR(`【无法解析返回数据】 ${responseData}`);
+    Log.ERROR("【无法解析返回数据】|", url, "|", responseData);
   }
 
   const title =
-    `${responseData.msg}` ||
-    `${RequestStatus[responseData.code as RequestStatusKey]}` ||
+    responseData.msg ||
+    RequestStatus[responseData.code as RequestStatusKey] ||
     "系统异常";
 
   if (statusCode === 200) {
-    Log.INFO(`【请求成功】| 200 |  ${data}`);
     if (responseData.code === 200) {
-      resolve(data as T);
+      Log.INFO("【请求成功】| ", url, "|", responseData);
+
+      resolve(responseData as T);
     } else if (responseData.code === 401) {
-      Log.WARN(`【未授权登录】| 401 |  ${responseData.msg}`);
+      wx.showToast({
+        title,
+        icon: "none",
+        duration: 2000,
+        mark: true,
+        // complete() {
+        //   wx.removeStorageSync("token");
+        //   wx.clearStorageSync();
+        //   setTimeout(() => {
+        //     wx.reLaunch({
+        //       url: "/pages/home/index",
+        //     });
+        //   }, 2000);
+        // },
+      });
+
+      reject(new Error(title));
+    } else {
+      Log.ERROR(
+        "【请求失败】| ",
+        url,
+        "|",
+        responseData.code,
+        title,
+        "|",
+        responseData
+      );
 
       wx.showToast({
         title,
         icon: "none",
-        duration: 4000,
-        success() {
-          wx.removeStorageSync("token");
-          wx.clearStorageSync();
-          // wx.redirectTo({
-          //   url: "/pages/login/index",
-          // });
-        },
+        duration: 3000,
+        mark: true,
       });
+
+      reject(new Error(title));
     }
   } else {
-    Log.ERROR(`【请求失败】| ${statusCode} | ${title} ${responseData}`);
+    Log.ERROR("【wx.request】| ", url, statusCode, "|", responseData);
+
+    wx.showToast({
+      title,
+      icon: "none",
+      duration: 3000,
+      mark: true,
+    });
     reject(new Error(title));
   }
 }

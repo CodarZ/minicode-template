@@ -1,5 +1,6 @@
 import { _requestInterceptor, _responseInterceptor } from "./interceptor";
 import { Log } from "./log";
+import { filterValidFields } from "./tools";
 
 type RequestOptions = Omit<
   WechatMiniprogram.RequestOption,
@@ -25,8 +26,9 @@ function _httpRequest<T>(
   data: WechatMiniprogram.RequestOption["data"],
   options: RequestOptions = {}
 ) {
-  Log.INFO(`【发起请求】| ${method} ${url} | ${data}`);
-  const { formatURL, configs } = _requestInterceptor(url, options);
+  const { noPrefixURL, formatURL, configs } = _requestInterceptor(url, options);
+
+  Log.INFO("【发起请求】|", method, noPrefixURL, "|", data);
 
   return new Promise<T>((resolve, reject) => {
     wx.request({
@@ -40,15 +42,24 @@ function _httpRequest<T>(
       useHighPerformanceMode: true,
       ...configs,
       success: (res) => {
-        _responseInterceptor(res, resolve, reject);
+        _responseInterceptor(res, noPrefixURL, resolve, reject);
       },
       fail: (err) => {
         // 只要开发者的服务器有响应，就不会走这里
-        Log.ERROR(`【服务器无响应】|  ${err.errno} ${err.errMsg}`);
-        reject(new Error(err.errMsg || "服务器无响应"));
-      },
-      complete: () => {
-        wx.hideLoading();
+        Log.ERROR(
+          "【wx.request fail】| ",
+          method,
+          noPrefixURL,
+          "|",
+          err.errno,
+          err.errMsg
+        );
+        wx.showToast({
+          icon: "none",
+          title: `${err.errno} ${err.errMsg}`,
+          mark: true,
+        });
+        reject(new Error(err.errMsg || "服务异常"));
       },
     });
   });
@@ -60,7 +71,7 @@ function _createHttp(method: WechatMiniprogram.RequestOption["method"]) {
     data: string | WechatMiniprogram.IAnyObject | ArrayBuffer = {},
     options?: RequestOptions
   ): Promise<T> => {
-    return _httpRequest<T>(url, method, data, options);
+    return _httpRequest<T>(url, method, filterValidFields(data), options);
   };
 }
 
@@ -78,13 +89,11 @@ function upload<T>(
   formData?: WechatMiniprogram.UploadFileOption["formData"],
   options: RequestOptions = {}
 ) {
-  Log.INFO(`【发起上传文件请求】 | ${url} 【附带参数】, ${formData}`);
-  const { formatURL, configs } = _requestInterceptor(url, options);
+  const { formatURL, noPrefixURL, configs } = _requestInterceptor(url, options);
+
+  Log.INFO("【发起上传文件请求】|", noPrefixURL, "|", formData);
 
   return new Promise<T>((resolve, reject) => {
-    wx.showLoading({
-      title: "正在上传中",
-    });
     wx.uploadFile({
       url: formatURL,
       filePath,
@@ -95,15 +104,17 @@ function upload<T>(
       formData,
       ...configs,
       success: (res) => {
-        _responseInterceptor(res, resolve, reject);
+        _responseInterceptor(res, noPrefixURL, resolve, reject);
       },
       fail: (err) => {
         // 只要开发者的服务器有响应，就不会走这里
-        Log.ERROR(`【上传文件服务器无响应】|  ${err.errMsg}`);
-        reject(new Error(err.errMsg || "上传文件服务无响应"));
-      },
-      complete: () => {
-        wx.hideLoading();
+        Log.ERROR("【wx.uploadFile fail】| ", noPrefixURL, "|", err.errMsg);
+        wx.showToast({
+          icon: "none",
+          title: ` 上传服务无响应: ${err.errMsg}`,
+          mark: true,
+        });
+        reject(new Error(err.errMsg || "上传服务无响应"));
       },
     });
   });
