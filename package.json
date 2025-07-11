@@ -15,6 +15,7 @@
   "dependencies": {
     "@vant/area-data": "^2.0.0",
     "dayjs": "^1.11.13",
+    "mitt": "^3.0.1",
     "tdesign-miniprogram": "^1.9.6"
   },
   "devDependencies": {
