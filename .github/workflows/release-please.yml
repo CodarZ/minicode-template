@@ -24,6 +24,8 @@ jobs:
           release-type: node
           include-v-in-tag: true
           changelog-path: CHANGELOG.md
-          bump-minor-pre-major: true
-          bump-patch-for-minor-pre-major: true
+          bump-minor-pre-major: false
+          bump-patch-for-minor-pre-major: false
+          # draft: true
+          # skip-github-pull-request: true
           prerelease: false
