@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/CodarZ/minicode-template/compare/v1.0.0...v1.0.1) (2025-11-27)
+
+
+### Bug Fixes
+
+* 将 release-please 工作流中的 draft 设置为 false ([3200dc7](https://github.com/CodarZ/minicode-template/commit/3200dc78da8ce932beb3100a28b39d35f3b538bb))
+
 ## 1.0.0 (2025-11-27)
 
 
