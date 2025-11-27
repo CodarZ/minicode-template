@@ -1,32 +1,60 @@
 {
   "compilerOptions": {
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "module": "ES2020",
-    "target": "ES2020",
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    /* 语言和环境 */
+    "target": "ESNext",
+    "lib": ["ESNext"],
     "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+
+    /* 模块 */
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowJs": true,
+
+    /* 互操作性约束 */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": false,
+    "forceConsistentCasingInFileNames": true,
+
+    /* 类型检查 */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
     "noImplicitThis": true,
-    "noImplicitReturns": true,
     "alwaysStrict": true,
-    "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strict": true,
-    "strictPropertyInitialization": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": false,
+
+    /* 路径解析 */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "tdesign-miniprogram/*": ["./src/miniprogram_npm/tdesign-miniprogram/*"],
-      "@vant/*": ["./src/miniprogram_npm/@vant/*"]
+      "tdesign-miniprogram/*": ["./src/miniprogram_npm/tdesign-miniprogram/*"]
     },
-    "lib": ["ES2020"],
-    "typeRoots": ["./typings", "node_modules"],
+
+    /* 类型定义 */
     "types": ["miniprogram-api-typings"],
-    "outDir": "./dist"
+    "typeRoots": ["./typings", "./node_modules"],
+
+    /* 编译选项 */
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "outDir": "./dist",
+    "removeComments": false,
+    "sourceMap": true,
+    "declaration": false
   },
-  "include": ["./**/*.ts"],
-  "exclude": ["node_modules", "miniprogram_npm"]
+  "include": ["src/**/*.ts", "typings/**/*.d.ts"],
+  "exclude": ["node_modules", "miniprogram_npm", "dist", "*.discard"]
 }

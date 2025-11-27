@@ -4,22 +4,40 @@
   "version": "0.0.0",
   "author": "CoderZ <1476712061@qq.com>",
   "license": "MIT",
-  "scripts": {},
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "commit": "git-cz"
+  },
   "keywords": [
     "微信小程序",
     "TDesign"
   ],
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "dependencies": {
-    "@vant/area-data": "^2.0.0",
-    "dayjs": "^1.11.13",
+    "dayjs": "^1.11.19",
     "mitt": "^3.0.1",
-    "tdesign-miniprogram": "^1.9.6"
+    "tdesign-miniprogram": "^1.11.2"
   },
   "devDependencies": {
-    "miniprogram-api-typings": "^4.0.7",
-    "typescript": "^5.8.3"
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "commitizen": "^4.3.1",
+    "cz-git": "^1.12.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "miniprogram-api-typings": "^4.1.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }

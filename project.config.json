@@ -4,10 +4,7 @@
   "miniprogramRoot": "src/",
   "compileType": "miniprogram",
   "setting": {
-    "useCompilerPlugins": [
-      "typescript",
-      "sass"
-    ],
+    "useCompilerPlugins": ["typescript", "sass"],
     "packNpmManually": true,
     "packNpmRelationList": [
       {
@@ -51,7 +48,7 @@
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "libVersion": "3.8.9",
+  "libVersion": "3.11.2",
   "packOptions": {
     "ignore": [],
     "include": []

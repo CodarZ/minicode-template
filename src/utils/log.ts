@@ -16,9 +16,7 @@ function formatLog(notRealtime: boolean, ...args: any[]): string {
     }
   }
 
-  return `${BaseENV.envName} | ${currentPath} | ${args
-    .map((a) => JSON.stringify(a))
-    .join(" ")}`;
+  return `${BaseENV.envName} | ${currentPath} | ${args.map((a) => JSON.stringify(a)).join(" ")}`;
 }
 
 function _log(type: "error" | "warn" | "info", ...args: any[]) {
@@ -54,7 +52,7 @@ function _log(type: "error" | "warn" | "info", ...args: any[]) {
     config.consoleMethod(
       `%c${type.charAt(0).toUpperCase() + type.slice(1)}`,
       `background-color:${config.color};border-radius:4px;padding:0 4px`,
-      ...args
+      ...args,
     );
   } else {
     config.consoleMethod(...args);

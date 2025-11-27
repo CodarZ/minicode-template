@@ -2,10 +2,7 @@ import { _requestInterceptor, _responseInterceptor } from "./interceptor";
 import { Log } from "./log";
 import { filterValidFields } from "./tools";
 
-type RequestOptions = Omit<
-  WechatMiniprogram.RequestOption,
-  "url" | "method" | "data"
-> & {
+type RequestOptions = Omit<WechatMiniprogram.RequestOption, "url" | "method" | "data"> & {
   query?: string | WechatMiniprogram.IAnyObject | ArrayBuffer;
 };
 
@@ -24,7 +21,7 @@ function _httpRequest<T>(
   url: string,
   method: WechatMiniprogram.RequestOption["method"],
   data: WechatMiniprogram.RequestOption["data"],
-  options: RequestOptions = {}
+  options: RequestOptions = {},
 ) {
   const { noPrefixURL, formatURL, configs } = _requestInterceptor(url, options);
 
@@ -46,14 +43,7 @@ function _httpRequest<T>(
       },
       fail: (err) => {
         // 只要开发者的服务器有响应，就不会走这里
-        Log.ERROR(
-          "【wx.request fail】| ",
-          method,
-          noPrefixURL,
-          "|",
-          err.errno,
-          err.errMsg
-        );
+        Log.ERROR("【wx.request fail】| ", method, noPrefixURL, "|", err.errno, err.errMsg);
         wx.showToast({
           icon: "none",
           title: `${err.errno} ${err.errMsg}`,
@@ -69,7 +59,7 @@ function _createHttp(method: WechatMiniprogram.RequestOption["method"]) {
   return <T>(
     url: string,
     data: string | WechatMiniprogram.IAnyObject | ArrayBuffer = {},
-    options?: RequestOptions
+    options?: RequestOptions,
   ): Promise<T> => {
     return _httpRequest<T>(url, method, filterValidFields(data), options);
   };
@@ -87,7 +77,7 @@ function upload<T>(
   url: string,
   filePath: string,
   formData?: WechatMiniprogram.UploadFileOption["formData"],
-  options: RequestOptions = {}
+  options: RequestOptions = {},
 ) {
   const { formatURL, noPrefixURL, configs } = _requestInterceptor(url, options);
 

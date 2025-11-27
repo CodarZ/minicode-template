@@ -72,25 +72,6 @@
     ".versionrc": "json5",
     "*.cjson": "jsonc"
   },
-  // Git
-  "git.autofetch": true,
-  "git.enableSmartCommit": true,
-  // emmet
-  "emmet.includeLanguages": {
-    "wxml": "html",
-    "wxs": "javascript",
-    "wxss": "css",
-    "axml": "html",
-    "acss": "css"
-  },
-  // exextension
-  // Eslint
-  "eslint.useFlatConfig": true,
-  "eslint.format.enable": false,
-  // prettier
-  "prettier.printWidth": 100,
-  "prettier.singleQuote": true,
-  "prettier.endOfLine": "auto",
   "files.exclude": {
     ".git": true,
     ".DS_Store": true,
@@ -113,5 +94,26 @@
     "**/*.{eslint,stylelint,prettier}*": true,
     // 其他
     "README.md": true
-  }
+  },
+  // Git
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  // emmet
+  "emmet.includeLanguages": {
+    "wxml": "html",
+    "wxs": "javascript",
+    "wxss": "css",
+    "axml": "html",
+    "acss": "css"
+  },
+  // Eslint
+  "eslint.useFlatConfig": true,
+  "eslint.format.enable": false,
+  // prettier
+  "prettier.printWidth": 120,
+  "prettier.singleQuote": true,
+  "prettier.endOfLine": "auto",
+
+  "minapp-vscode.disableAutoConfig": true,
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }

@@ -1,0 +1,45 @@
+{
+  "printWidth": 120,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": false,
+  "quoteProps": "as-needed",
+  "jsxSingleQuote": false,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "rangeStart": 0,
+  "requirePragma": false,
+  "insertPragma": false,
+  "proseWrap": "preserve",
+  "htmlWhitespaceSensitivity": "css",
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": "*.{wxss,scss}",
+      "options": {
+        "parser": "scss"
+      }
+    },
+    {
+      "files": "*.{wxml,html}",
+      "options": {
+        "parser": "html",
+        "htmlWhitespaceSensitivity": "strict"
+      }
+    },
+    {
+      "files": "*.wxs",
+      "options": {
+        "parser": "babel"
+      }
+    },
+    {
+      "files": "*.json,*rc",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
+}

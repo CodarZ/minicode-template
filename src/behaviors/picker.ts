@@ -44,7 +44,7 @@ const pickerBehavior = Behavior({
           this.setData({
             _pickedPropVisible: true,
           });
-        }
+        },
       );
     },
 
@@ -93,7 +93,7 @@ const pickerBehavior = Behavior({
           console.groupEnd();
 
           // this._closePicker(e);
-        }
+        },
       );
     },
   },

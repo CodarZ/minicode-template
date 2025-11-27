@@ -5,7 +5,7 @@ import { Log } from "./log";
 /** 请求拦截器 */
 export function _requestInterceptor(
   url: string,
-  options?: Omit<WechatMiniprogram.RequestOption, "url" | "method" | "data">
+  options?: Omit<WechatMiniprogram.RequestOption, "url" | "method" | "data">,
 ) {
   let formatURL = url;
   let noPrefixURL = url;
@@ -26,12 +26,10 @@ export function _requestInterceptor(
 }
 
 export function _responseInterceptor<T>(
-  res:
-    | WechatMiniprogram.RequestSuccessCallbackResult
-    | WechatMiniprogram.UploadFileSuccessCallbackResult,
+  res: WechatMiniprogram.RequestSuccessCallbackResult | WechatMiniprogram.UploadFileSuccessCallbackResult,
   url: string,
   resolve: (value: T | PromiseLike<T>) => void,
-  reject: (reason?: any) => void
+  reject: (reason?: any) => void,
 ) {
   const { data, statusCode } = res;
 
@@ -46,10 +44,7 @@ export function _responseInterceptor<T>(
     Log.ERROR("【无法解析返回数据】|", url, "|", responseData);
   }
 
-  const title =
-    responseData.msg ||
-    RequestStatus[responseData.code as RequestStatusKey] ||
-    "系统异常";
+  const title = responseData.msg || RequestStatus[responseData.code as RequestStatusKey] || "系统异常";
 
   if (statusCode === 200) {
     if (responseData.code === 200) {
@@ -75,15 +70,7 @@ export function _responseInterceptor<T>(
 
       reject(new Error(title));
     } else {
-      Log.ERROR(
-        "【请求失败】| ",
-        url,
-        "|",
-        responseData.code,
-        title,
-        "|",
-        responseData
-      );
+      Log.ERROR("【请求失败】| ", url, "|", responseData.code, title, "|", responseData);
 
       wx.showToast({
         title,
