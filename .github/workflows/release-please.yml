@@ -14,13 +14,15 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
+      - run: git pull --ff-only origin master
       - uses: googleapis/release-please-action@v4.4.0
         with:
           token: ${{ secrets.GH_TOKEN }}
           release-type: node
+          include-v-in-tag: true
           changelog-path: CHANGELOG.md
           bump-minor-pre-major: false
           bump-patch-for-minor-pre-major: false
-          draft: false
+          # draft: true
+          # skip-github-pull-request: true
           prerelease: false
-          include-v-in-tag: true
